@@ -8,9 +8,10 @@ export function RenderContact() {
         reset,
     } = useForm({
         defaultValues: {
-            name: '',
+            fullName: '',
+            subject: '',
             email: '',
-            message: '',
+            body: '',
         },
     });
 
@@ -25,26 +26,59 @@ export function RenderContact() {
             <div className="contact-form max-w-md mx-auto mt-6">
                 <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    {/* Full Name */}
                     <div>
-                        <label htmlFor="name" className="block mb-1">
-                            Name
+                        <label htmlFor="fullName" className="block mb-1">
+                            Full Name
                         </label>
                         <input
                             type="text"
-                            id="name"
-                            {...register('name', {
-                                required: 'Name is required',
+                            id="fullName"
+                            {...register('fullName', {
+                                required: 'Full name is required',
+                                minLength: {
+                                    value: 3,
+                                    message:
+                                        'Full name must be at least 3 characters',
+                                },
                             })}
                             className="border rounded p-2 w-full"
-                            placeholder="Your Name"
+                            placeholder="Your Full Name"
                         />
-                        {errors.name && (
+                        {errors.fullName && (
                             <p className="text-red-500 text-sm mt-1">
-                                {errors.name.message}
+                                {errors.fullName.message}
                             </p>
                         )}
                     </div>
 
+                    {/* Subject */}
+                    <div>
+                        <label htmlFor="subject" className="block mb-1">
+                            Subject
+                        </label>
+                        <input
+                            type="text"
+                            id="subject"
+                            {...register('subject', {
+                                required: 'Subject is required',
+                                minLength: {
+                                    value: 3,
+                                    message:
+                                        'Subject must be at least 3 characters',
+                                },
+                            })}
+                            className="border rounded p-2 w-full"
+                            placeholder="Subject of your message"
+                        />
+                        {errors.subject && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.subject.message}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Email */}
                     <div>
                         <label htmlFor="email" className="block mb-1">
                             Email
@@ -70,21 +104,27 @@ export function RenderContact() {
                         )}
                     </div>
 
+                    {/* Body */}
                     <div>
-                        <label htmlFor="message" className="block mb-1">
-                            Message
+                        <label htmlFor="body" className="block mb-1">
+                            Body
                         </label>
                         <textarea
-                            id="message"
-                            {...register('message', {
-                                required: 'Message is required',
+                            id="body"
+                            {...register('body', {
+                                required: 'Body is required',
+                                minLength: {
+                                    value: 3,
+                                    message:
+                                        'Body must be at least 3 characters',
+                                },
                             })}
                             className="border rounded p-2 w-full h-32 resize-y"
                             placeholder="Your message here..."
                         />
-                        {errors.message && (
+                        {errors.body && (
                             <p className="text-red-500 text-sm mt-1">
-                                {errors.message.message}
+                                {errors.body.message}
                             </p>
                         )}
                     </div>
