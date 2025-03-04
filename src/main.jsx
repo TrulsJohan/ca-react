@@ -1,25 +1,15 @@
 import './index.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import { Header, Footer } from './components/Layout';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Layout } from './components/Layout/index';
 import {
     RenderHome,
     RenderProduct,
     RenderCart,
     RenderCheckout,
     RenderContact,
-} from './routes';
-
-const Layout = () => (
-    <>
-        <Header />
-        <main className="container mx-auto p-4">
-            <Outlet />
-        </main>
-        <Footer />
-    </>
-);
+} from './pages';
 
 const router = createBrowserRouter([
     {
@@ -31,7 +21,7 @@ const router = createBrowserRouter([
                 element: <RenderHome />,
             },
             {
-                path: 'product',
+                path: 'product/:id',
                 element: <RenderProduct />,
             },
             {
