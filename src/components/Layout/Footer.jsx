@@ -1,7 +1,13 @@
+// components/Footer.js
 export function Footer() {
     return (
-        <footer className="bg-gray-800 text-white p-4 text-center mt-8">
-            <p>&copy; 2025 Your Store Name. All rights reserved.</p>
+        <footer className="bg-stone-400 text-gray-900 py-6 mt-8 font-sans">
+            <div className="container mx-auto flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between sm:gap-0">
+                <p className="text-sm sm:text-base">
+                    © {new Date().getFullYear()} All rights
+                    reserved.
+                </p>
+            </div>
         </footer>
     );
 }
