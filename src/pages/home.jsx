@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import { usePosts } from '../hooks/usePosts';
 import { useState } from 'react';
+import { Card } from '../components/Cards/card';
 
 export function RenderHome() {
     const [sortOrder, setSortOrder] = useState('asc');
@@ -31,19 +31,17 @@ export function RenderHome() {
                     className="border rounded p-2 w-full max-w-md"
                 />
             </div>
-            {paginatedData.length > 0 ? (
-                paginatedData.map((product) => (
-                    <Link key={product.id} to={`/product/${product.id}`}>
-                        <div className="mb-4">
-                            <p>{product.title}</p>
-                        </div>
-                    </Link>
-                ))
-            ) : data.length === 0 ? (
-                <p>Loading...</p>
-            ) : (
-                <p>No products match your search.</p>
-            )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {paginatedData.length > 0 ? (
+                    paginatedData.map((product) => (
+                        <Card key={product.id} product={product} />
+                    ))
+                ) : data.length === 0 ? (
+                    <p>Loading...</p>
+                ) : (
+                    <p>No products match your search.</p>
+                )}
+            </div>
             <div className="mt-6 flex items-center space-x-4">
                 <button
                     className="bg-blue-600 text-white rounded p-2 hover:bg-blue-700 disabled:bg-gray-400"
@@ -70,7 +68,6 @@ export function RenderHome() {
                     Sort {sortOrder === 'asc' ? 'Descending' : 'Ascending'}
                 </button>
             </div>
-            {message && <p className="mt-4">{message}</p>}
         </>
     );
 }

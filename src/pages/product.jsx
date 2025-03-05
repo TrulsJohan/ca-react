@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { API_URL } from '../utility/constants';
 import { useCart } from '../stores/cart';
 import { useState } from 'react';
+import { Review } from '../components/Reviews/Review';
 
 export function RenderProduct() {
     const params = useParams();
@@ -50,7 +51,6 @@ export function RenderProduct() {
 
     return (
         <>
-            <h1>Welcome to product page!</h1>
             <div className="product-details">
                 <h2 className="text-2xl font-bold mb-4">{data.title}</h2>
                 <p className="mb-4">{data.description}</p>
@@ -108,15 +108,7 @@ export function RenderProduct() {
                         <h3 className="text-lg font-semibold mb-2">Reviews</h3>
                         <ul className="space-y-4">
                             {data.reviews.map((review) => (
-                                <li key={review.id} className="border-b pb-2">
-                                    <p className="font-semibold">
-                                        {review.username}
-                                    </p>
-                                    <p className="text-sm">
-                                        Rating: {review.rating}/5
-                                    </p>
-                                    <p>{review.description}</p>
-                                </li>
+                                <Review key={review.id} review={review} />
                             ))}
                         </ul>
                     </div>
