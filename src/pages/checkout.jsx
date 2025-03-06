@@ -14,23 +14,22 @@ export function RenderCheckout() {
 
     if (purchaseComplete) {
         return (
-            <>
+            <div className='flex flex-col w-full items-center text-center py-32 px-6 sm:px-20 md:px-40'>
                 <h1>Thank You for Your Purchase!</h1>
                 <p className="mt-4">
                     Your order has been successfully processed.
                 </p>
                 <Link to="/">
-                    <button className="mt-6 bg-blue-600 text-white rounded p-2 hover:bg-blue-700">
+                    <button className="mt-6 bg-stone-500 text-white rounded p-2 hover:bg-stone-300">
                         Back to Home
                     </button>
                 </Link>
-            </>
+            </div>
         );
     }
 
     return (
         <>
-            <h1>Welcome to checkout page!</h1>
             {items.length > 0 ? (
                 <CheckoutForm
                     items={items}

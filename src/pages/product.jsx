@@ -1,9 +1,10 @@
 import { usePost } from '../hooks/usePost';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { API_URL } from '../utility/constants';
 import { useCart } from '../stores/cart';
 import { useState } from 'react';
 import { Review } from '../components/Reviews/Review';
+import ArrowRight from '../assets/arrowright.svg';
 
 export function RenderProduct() {
     const params = useParams();
@@ -51,17 +52,23 @@ export function RenderProduct() {
 
     return (
         <>
-            <div className="product-details">
-                <h2 className="text-2xl font-bold mb-4">{data.title}</h2>
-                <p className="mb-4">{data.description}</p>
+            <div className="product-details px-6">
+                <div className="flex flex-row gap-4 items-center py-8">
+                    <Link to={'/'}>
+                        <button className="bg-stone-300 text-white rounded p-1 hover:bg-stone-200 disabled:bg-stone-100">
+                            <img src={ArrowRight} alt="back"></img>
+                        </button>
+                    </Link>
+                    <h2 className="text-2xl font-bold">{data.title}</h2>
+                </div>
                 <img
                     src={data.image.url || 'https://via.placeholder.com/300'}
                     alt={data.image.alt || data.title}
-                    className="max-w-xs mb-4"
+                    className="w-full mb-8"
                 />
                 <div className="mb-4">
                     {hasDiscount ? (
-                        <>
+                        <div className="flex flex-col gap-2">
                             <p className="text-gray-500 line-through">
                                 Original Price: ${data.price.toFixed(2)}
                             </p>
@@ -73,17 +80,19 @@ export function RenderProduct() {
                                 You save: ${discountAmount.toFixed(2)} (
                                 {discountPercentage}%)
                             </p>
-                        </>
+                        </div>
                     ) : (
                         <p className="text-xl font-semibold">
                             Price: ${data.price.toFixed(2)}
                         </p>
                     )}
                 </div>
-                <div className="quantity-selector my-4">
-                    <label htmlFor="quantity" className="mr-2">
-                        Quantity:
-                    </label>
+                <div className="flex flex-row gap-4 quantity-selector my-8">
+                    <button
+                        onClick={handleAddToCart}
+                        className="bg-stone-500 text-white rounded p-2 hover:bg-stone-300">
+                        Add to Cart
+                    </button>
                     <select
                         id="quantity"
                         value={quantity}
@@ -96,16 +105,12 @@ export function RenderProduct() {
                         ))}
                     </select>
                 </div>
-                <button
-                    onClick={handleAddToCart}
-                    className="bg-blue-600 text-white rounded p-2 hover:bg-blue-700">
-                    Add to Cart
-                </button>
-
-                {/* Reviews Section */}
+                <p className="mb-4">{data.description}</p>
                 {data.reviews && data.reviews.length > 0 ? (
-                    <div className="mt-6">
-                        <h3 className="text-lg font-semibold mb-2">Reviews</h3>
+                    <div className="mt-8 py-8">
+                        <h3 className="text-lg font-semibold mb-2 border-b pb-2">
+                            Reviews
+                        </h3>
                         <ul className="space-y-4">
                             {data.reviews.map((review) => (
                                 <Review key={review.id} review={review} />
@@ -116,7 +121,6 @@ export function RenderProduct() {
                     <p className="mt-6">No reviews yet.</p>
                 )}
             </div>
-            {message && <p className="mt-2">{message}</p>}
         </>
     );
 }

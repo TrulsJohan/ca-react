@@ -18,7 +18,7 @@ export function RenderCart() {
         <>
             {items.length > 0 ? (
                 <div className="cart-details">
-                    <ul className="space-y-4">
+                    <ul className="flex flex-col py-8 gap-6 px-6 sm:px-20 md:px-40">
                         {items.map((item) => (
                             <CartItem
                                 key={item.id}
@@ -29,7 +29,7 @@ export function RenderCart() {
                             />
                         ))}
                     </ul>
-                    <div className="mt-6">
+                    <div className="pb-8 px-6 sm:px-20 md:px-40">
                         <p className="text-lg">
                             Total Items: {getTotalItems()}
                         </p>
@@ -38,18 +38,28 @@ export function RenderCart() {
                         </p>
                         <button
                             onClick={removeAll}
-                            className="mt-4 bg-gray-600 text-white rounded p-2 hover:bg-gray-700">
+                            className="mt-4 bg-red-400 text-white rounded p-2 hover:bg-stone-100">
                             Clear Cart
                         </button>
                         <Link to="/checkout">
-                            <button className="mt-4 ml-4 bg-blue-600 text-white rounded p-2 hover:bg-blue-700">
+                            <button className="mt-4 ml-4 bg-stone-500 text-white rounded p-2 hover:bg-stone-300">
                                 Checkout
                             </button>
                         </Link>
                     </div>
                 </div>
             ) : (
-                <p>Your cart is empty.</p>
+                <div className='flex flex-col w-full items-center justify-center py-32 gap-6 px-6 sm:px-20 md:px-40'>
+                    <p className='text-center'>
+                        Your cart is empty. Why not check out some of our
+                        products?
+                    </p>
+                    <Link to={'/'}>
+                        <button className='bg-stone-500 text-white rounded p-2'>
+                            See Products
+                        </button>
+                    </Link>
+                </div>
             )}
         </>
     );
