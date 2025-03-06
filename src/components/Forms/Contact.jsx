@@ -26,7 +26,6 @@ export function ContactForm({ onSubmit }) {
             <form
                 onSubmit={handleSubmit(handleFormSubmit)}
                 className="space-y-4">
-                {/* Full Name */}
                 <div>
                     <label htmlFor="fullName" className="block mb-1">
                         Full Name
@@ -51,8 +50,6 @@ export function ContactForm({ onSubmit }) {
                         </p>
                     )}
                 </div>
-
-                {/* Subject */}
                 <div>
                     <label htmlFor="subject" className="block mb-1">
                         Subject
@@ -77,8 +74,6 @@ export function ContactForm({ onSubmit }) {
                         </p>
                     )}
                 </div>
-
-                {/* Email */}
                 <div>
                     <label htmlFor="email" className="block mb-1">
                         Email
@@ -102,8 +97,6 @@ export function ContactForm({ onSubmit }) {
                         </p>
                     )}
                 </div>
-
-                {/* Body */}
                 <div>
                     <label htmlFor="body" className="block mb-1">
                         Body
@@ -126,7 +119,6 @@ export function ContactForm({ onSubmit }) {
                         </p>
                     )}
                 </div>
-
                 <button
                     type="submit"
                     className="bg-blue-600 text-white rounded p-2 w-full hover:bg-blue-700">

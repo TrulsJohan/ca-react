@@ -131,7 +131,6 @@ export function CheckoutForm({ items, totalPrice, onSubmit }) {
                         </p>
                     )}
                 </div>
-
                 <h2 className="text-xl font-semibold mt-4">Payment Details</h2>
                 <div>
                     <label htmlFor="cardNumber" className="block mb-1">
@@ -200,7 +199,6 @@ export function CheckoutForm({ items, totalPrice, onSubmit }) {
                         )}
                     </div>
                 </div>
-
                 <button
                     type="submit"
                     className="mt-6 bg-green-600 text-white rounded p-2 hover:bg-green-700 w-full">

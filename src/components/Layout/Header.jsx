@@ -21,7 +21,6 @@ export function Header() {
                         className="h-8 w-8 sm:h-10 sm:w-10"
                     />
                 </Link>
-
                 <div className="hidden sm:flex items-center gap-6">
                     <Link
                         to="/"
@@ -35,11 +34,9 @@ export function Header() {
                     </Link>
                     <CartIcon />
                 </div>
-
                 <button className="sm:hidden" onClick={toggleMenu}>
                     <img src={Menu} alt="Menu" className="h-6 w-6" />
                 </button>
-
                 {isMenuOpen && (
                     <div className="absolute top-16 left-0 w-full bg-stone-300 sm:hidden flex flex-col items-center gap-4 py-4 shadow-md">
                         <Link

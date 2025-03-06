@@ -1,5 +1,5 @@
 import { usePosts } from '../hooks/usePosts';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card } from '../components/Cards/card';
 import Filter from '../assets/filter.svg';
 import ArrowRight from '../assets/arrowright.svg';
@@ -11,6 +11,10 @@ export function RenderHome() {
     const [page, setPage] = useState(1);
     const itemsPerPage = 10;
     const { data, message } = usePosts(sortOrder);
+
+    useEffect(() => {
+        setPage(1);
+    }, [searchTerm]);
 
     const filteredData = data.filter((product) =>
         product.title.toLowerCase().includes(searchTerm.toLowerCase())
