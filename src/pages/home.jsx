@@ -1,6 +1,9 @@
 import { usePosts } from '../hooks/usePosts';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card } from '../components/Cards/card';
+import Filter from '../assets/filter.svg';
+import ArrowRight from '../assets/arrowright.svg';
+import ArrowLeft from '../assets/arrowleft.svg';
 
 export function RenderHome() {
     const [sortOrder, setSortOrder] = useState('asc');
@@ -8,6 +11,10 @@ export function RenderHome() {
     const [page, setPage] = useState(1);
     const itemsPerPage = 10;
     const { data, message } = usePosts(sortOrder);
+
+    useEffect(() => {
+        setPage(1);
+    }, [searchTerm]);
 
     const filteredData = data.filter((product) =>
         product.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -22,7 +29,7 @@ export function RenderHome() {
 
     return (
         <>
-            <div className="mb-6">
+            <div className="flex flex-row w-full justify-center items-center p-8 gap-4">
                 <input
                     type="text"
                     placeholder="Search by product title..."
@@ -30,8 +37,18 @@ export function RenderHome() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="border rounded p-2 w-full max-w-md"
                 />
+                <button
+                    className="bg-stone-300 text-white rounded p-2 hover:bg-stone-200"
+                    onClick={() =>
+                        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
+                    }>
+                    <img src={Filter} alt="filter"></img>
+                </button>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className='flex flex-row p-4 px-6 sm:px-20 md:px-40'>
+                <p>Order {sortOrder === 'asc' ? 'Descending' : 'Ascending'}</p>
+            </div>
+            <div className="grid grid-cols-1 px-6 sm:grid-cols-2 sm:px-20 md:grid-cols-2 md:px-40 gap-6">
                 {paginatedData.length > 0 ? (
                     paginatedData.map((product) => (
                         <Card key={product.id} product={product} />
@@ -42,30 +59,23 @@ export function RenderHome() {
                     <p>No products match your search.</p>
                 )}
             </div>
-            <div className="mt-6 flex items-center space-x-4">
+            <div className="mt-6 flex items-center justify-center space-x-4 p-8">
                 <button
-                    className="bg-blue-600 text-white rounded p-2 hover:bg-blue-700 disabled:bg-gray-400"
+                    className="bg-stone-300 text-white rounded p-2 hover:bg-stone-200 disabled:bg-stone-100"
                     onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
                     disabled={page === 1}>
-                    Previous
+                    <img src={ArrowRight} alt="previous"></img>
                 </button>
                 <span>
-                    Page {page} of {totalPages}
+                    {page} of {totalPages}
                 </span>
                 <button
-                    className="bg-blue-600 text-white rounded p-2 hover:bg-blue-700 disabled:bg-gray-400"
+                    className="bg-stone-300 text-white rounded p-2 hover:bg-stone-200 disabled:bg-stone-100"
                     onClick={() =>
                         setPage((prev) => Math.min(prev + 1, totalPages))
                     }
                     disabled={page === totalPages}>
-                    Next
-                </button>
-                <button
-                    className="bg-blue-600 text-white rounded p-2 hover:bg-blue-700"
-                    onClick={() =>
-                        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
-                    }>
-                    Sort {sortOrder === 'asc' ? 'Descending' : 'Ascending'}
+                    <img src={ArrowLeft} alt="next"></img>
                 </button>
             </div>
         </>

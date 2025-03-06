@@ -21,12 +21,11 @@ export function ContactForm({ onSubmit }) {
     };
 
     return (
-        <div className="contact-form max-w-md mx-auto mt-6">
+        <div className="contact-form max-w-md mx-auto py-8 px-6">
             <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
             <form
                 onSubmit={handleSubmit(handleFormSubmit)}
                 className="space-y-4">
-                {/* Full Name */}
                 <div>
                     <label htmlFor="fullName" className="block mb-1">
                         Full Name
@@ -51,8 +50,6 @@ export function ContactForm({ onSubmit }) {
                         </p>
                     )}
                 </div>
-
-                {/* Subject */}
                 <div>
                     <label htmlFor="subject" className="block mb-1">
                         Subject
@@ -77,8 +74,6 @@ export function ContactForm({ onSubmit }) {
                         </p>
                     )}
                 </div>
-
-                {/* Email */}
                 <div>
                     <label htmlFor="email" className="block mb-1">
                         Email
@@ -102,8 +97,6 @@ export function ContactForm({ onSubmit }) {
                         </p>
                     )}
                 </div>
-
-                {/* Body */}
                 <div>
                     <label htmlFor="body" className="block mb-1">
                         Body
@@ -126,10 +119,9 @@ export function ContactForm({ onSubmit }) {
                         </p>
                     )}
                 </div>
-
                 <button
                     type="submit"
-                    className="bg-blue-600 text-white rounded p-2 w-full hover:bg-blue-700">
+                    className="bg-stone-500 text-white rounded p-2 w-full hover:bg-stone-300">
                     Send Message
                 </button>
             </form>
