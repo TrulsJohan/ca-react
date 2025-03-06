@@ -12,7 +12,7 @@ export function Header() {
     };
 
     return (
-        <header className="bg-stone-400 text-gray-900 p-4 shadow-md font-sans">
+        <header className="bg-stone-400 text-gray-900 px-6 py-4 shadow-md font-sans sm:px-20 md:px-40">
             <nav className="container mx-auto flex justify-between items-center">
                 <Link to="/">
                     <img

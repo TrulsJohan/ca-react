@@ -16,7 +16,7 @@ export function CartItem({
                 <img
                     src={item.image.url || 'https://via.placeholder.com/64'}
                     alt={item.image.alt || item.title}
-                    className="w-16 h-16 object-cover mr-4"
+                    className="w-32 h-32 object-cover"
                 />
                 <div>
                     <h3 className="font-semibold">{item.title}</h3>

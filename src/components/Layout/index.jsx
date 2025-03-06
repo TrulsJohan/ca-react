@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
  export const Layout = () => (
     <>
         <Header />
-        <main className="grow">
+        <main className="grow bg-stone-100">
             <Outlet />
         </main>
         <Footer />
