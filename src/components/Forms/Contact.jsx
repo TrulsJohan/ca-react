@@ -21,7 +21,7 @@ export function ContactForm({ onSubmit }) {
     };
 
     return (
-        <div className="contact-form max-w-md mx-auto mt-6">
+        <div className="contact-form max-w-md mx-auto py-8 px-6">
             <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
             <form
                 onSubmit={handleSubmit(handleFormSubmit)}
@@ -121,7 +121,7 @@ export function ContactForm({ onSubmit }) {
                 </div>
                 <button
                     type="submit"
-                    className="bg-blue-600 text-white rounded p-2 w-full hover:bg-blue-700">
+                    className="bg-stone-500 text-white rounded p-2 w-full hover:bg-stone-300">
                     Send Message
                 </button>
             </form>
