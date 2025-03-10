@@ -1,6 +1,6 @@
 import { usePosts } from '../hooks/usePosts';
 import { useState, useEffect } from 'react';
-import { Card } from '../components/Cards/card';
+import { Card } from '../components/Cards/Card';
 import Filter from '../assets/filter.svg';
 import ArrowRight from '../assets/arrowright.svg';
 import ArrowLeft from '../assets/arrowleft.svg';
