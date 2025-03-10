@@ -22,7 +22,5 @@ export function usePosts(sortOrder) {
         };
         fetchData();
     }, [sortOrder]);
-
-    console.log(data);
     return { data, message };
 }
