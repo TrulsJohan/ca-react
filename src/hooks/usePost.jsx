@@ -21,6 +21,5 @@ export function usePost(URL) {
         };
         fetchData();
     }, []);
-    console.log(data);
     return { data, message };
 }
